@@ -1,0 +1,28 @@
+   const api_key='ce09cd7a'
+    const component_style={
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:"spaceBetween",
+        margin:'70px',
+        backgroundColor:"orange",
+        width:'600px',
+        height:'300px'
+    }
+    const [S_name, setS_name] = useState('');
+    const [year, setyear] = useState();
+    const [list,setlist]=useState([])
+
+    const handleSubmit=()=>{
+      fetch(`https://www.omdbapi.com/?s=${S_name}&y=${year}&apikey=${api_key}`)
+        .then((res)=>{
+            return res.json()
+        })
+        .then((res)=>{
+            console.log(res)
+            setlist(res.Search)
+            console.log("the list is",list)
+        setS_name('')
+        setyear('')
+
+    })
+    }
